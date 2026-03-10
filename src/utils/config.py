@@ -38,6 +38,10 @@ class APIConfig(BaseModel):
     twitter: APISettings
     reddit: APISettings
 
+class NewsSourcesConfig(BaseModel):
+    enabled: bool = False
+    rss_feeds: list[str] = []
+
 
 class DatabaseConfig(BaseModel):
     url: str
@@ -77,6 +81,7 @@ class Settings(BaseModel):
     app: AppSettings
     paths: Paths
     apis: APIConfig
+    news_sources: NewsSourcesConfig
     database: DatabaseConfig
     llm: LLMConfig
     training: TrainingConfig

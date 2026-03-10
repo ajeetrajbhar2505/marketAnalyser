@@ -45,6 +45,7 @@ class Predictor:
         self.llm_scorer = LLMScorer(config)
         self.ensemble = EnsembleModel()
 
+
     async def run(self, symbol: str, horizon_days: int, force_refresh: bool = False) -> PredictionResult:
         price_df = await asyncio.to_thread(self.stock_fetcher.fetch_history, symbol, self.config.app.backtest_years, "1d", force_refresh)
         indicators = add_indicators(price_df)
@@ -99,4 +100,8 @@ class Predictor:
                 "social_count": len(social_posts),
                 "model_val_accuracy": val_acc,
             },
+            
+            
         )
+    
+    

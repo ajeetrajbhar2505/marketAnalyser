@@ -5,6 +5,14 @@ app:
   prediction_horizon_days: 3
   backtest_years: 5
 
+news_sources:
+  enabled: true
+  rss_feeds:
+    - "https://feeds.content.dowjones.io/public/rss/mw_topstories"  # MarketWatch
+    - "https://www.cnbc.com/id/100003114/device/rss/rss.html"       # CNBC
+    - "https://finance.yahoo.com/news/rssindex"                      # Yahoo Finance
+    - "https://seekingalpha.com/market_currents.xml"   
+
 paths:
   raw_data: "data/raw"
   processed_data: "data/processed"
