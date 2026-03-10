@@ -1,0 +1,60 @@
+app:
+  name: "stock-prediction-llm"
+  log_level: "INFO"
+  cache_ttl_seconds: 900
+  prediction_horizon_days: 3
+  backtest_years: 5
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  database: "data/databases/market.db"
+
+apis:
+  yfinance:
+    enabled: true
+  alpha_vantage:
+    api_key: "BQ4UBG300J5T6QZW"
+    enabled: false
+  news_api:
+    api_key: "c57081a2811c47f1825dabf8818ffe6b"
+    enabled: false
+  twitter:
+    api_key: "FY7avDoo3J72YsuFRJyvrefwn"
+    api_secret: "9j0vFoVkCyQZ1UYqOpJIkBKZRd8X6SP6874ECWdoeuuU5dEB0F"
+    bearer_token: "AAAAAAAAAAAAAAAAAAAAALSy8AEAAAAAHs2vbCv9RW0Ecp2jDSezLz%2F%2F%2BPI%3Ds7ypXII3sFdJvVHMXcd7eZzyrDDdarxYg2DCD5F9IDE3MUNX6F"
+    enabled: false
+  reddit:
+    client_id: "${REDDIT_CLIENT_ID}"
+    client_secret: "${REDDIT_CLIENT_SECRET}"
+    user_agent: "market-analyser/0.1"
+    enabled: false
+
+database:
+  url: "sqlite:///data/databases/market.db"
+  echo: false
+
+llm:
+  provider: "hf"  # hf|openai|llama.cpp
+  model_name: "gpt2"  # placeholder; swap with finetuned checkpoint
+  max_tokens: 256
+  temperature: 0.3
+  top_p: 0.9
+  system_prompt: "You are a cautious financial analyst. Never give financial advice, only probabilistic signals."
+
+training:
+  epochs: 3
+  batch_size: 8
+  learning_rate: 3e-5
+  weight_decay: 0.01
+  max_seq_length: 256
+  validation_split: 0.1
+
+backtest:
+  initial_capital: 100000
+  transaction_cost: 0.0005
+  slippage: 0.0002
+
+redis:
+  enabled: false
+  url: "redis://localhost:6379/0"

@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+
+# OS files
+.DS_Store
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Local data and cache
+data/raw/
+data/processed/
+data/databases/
+
+# Environment / secrets
+.env
+
+# Streamlit cache
+.streamlit/
+
+# PyTorch / HF caches
+~/.cache/
+.cache/
+
+# Build artifacts
+dist/
+build/
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+coverage.xml
+
