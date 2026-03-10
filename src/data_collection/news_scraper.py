@@ -20,6 +20,10 @@ class NewsScraper:
             "https://seekingalpha.com/feed.xml",
             "https://www.investing.com/rss/news.rss",
             "https://www.marketwatch.com/feeds/topstories",
+            # Indian financial news
+            "https://economictimes.indiatimes.com/markets/rssfeeds",
+            "https://www.moneycontrol.com/rss/latestnews.xml",
+            "https://www.business-standard.com/rss/markets.rss",
         ]
 
     def fetch_news(self, symbol: str, days: int = 7, force_refresh: bool = False) -> List[Dict]:
